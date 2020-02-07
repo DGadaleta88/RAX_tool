@@ -8,9 +8,9 @@ Structural filters based on the presence of maximum common substructures (MCS) a
 Read-across prediction is made for the target based on the activity of analogue(s) identified with multiple similarity methods.
 
 
-## Installation
+## INSTALLATION
 
-### How to install the workflow
+### HOW TO INSTALL THE WORKFLOW
 1.	Install the last version of KNIME. It can be downloaded at https://www.knime.com/knime-analytics-platform (Windows version, 64bits).
 2.	Open KNIME.
 3.	Go to *“File -> Import KNIME Workflow”*.
@@ -19,9 +19,9 @@ Read-across prediction is made for the target based on the activity of analogue(
 6.  The workflow now is in your “KNIME Explorer” menu on the left of the screen. Double click on the workflow to open it.
 7.	If some of the plugins used for the workflow are missing, a message will appear asking you to install the missing extensions. Click on *“Ok”*. The procedure will guide you in the installation of the missing extensions. Restart KNIME to make the new plugins working. 
 
-## Use the Workflow
+## USE THE WORKFLOW
 
-### How to use the workflow
+### HOW TO USE THE WORKFLOW
 1.	Load the input file in the *“Insert input compound”* wrapped metanode:
  -  Double click on the metanode.
  -  Type the ID and the input SMILES.
@@ -36,7 +36,7 @@ Read-across prediction is made for the target based on the activity of analogue(
 4.	Execute the workflow by clicking on the *"Execute all the executable nodes"* button on the top of the window or press Shift+F7. The “Set parameters” node will change from the *“Paused”* state to the *“Running”* state. If the first part of the workflow is executed successfully, the node will change to the *“Executed”* state. If the node return to the *“Paused”* state, some problems occurred during the procedure.
 5.	Press *"Save"*  on the top-left of the window to save the workflow.
 
-### How to read the output
+### HOW TO READ THE OUTPUT
 1.	To inspect the list of selected analogue(s) within KNIME, select the *“Interactive Table”* nodes, then click on the   button on the top of the page or press F10. To inspect the RAX plot, right click on the “Set parameters” metanode, then select the *“Port 1”* option from the drop-down menu.
 2.	To inspect the results reported in the output files, go to the *“RAX_results”* directory that is present in the output location specified before. By default, the *“RAX_directory”* is created on the Desktop. The directory include two files:
 
@@ -49,10 +49,10 @@ Read-across prediction is made for the target based on the activity of analogue(
  -  **Full_list_analogues:** complete list of all the previous analogues that includes all the information above. For each analogue, the list(s) in which it appears and the relative ranks are indicated (e.g. STR1, BIO3 is the top-ranked structural analogue and the third-ranked biological analogue). Analogue(s) included in multiple similarity lists are considered more suitable with respect of those included in a single list.
  -  **Predictions:** reads-across predictions. Prediction of activity for the target is made by averaging activities of analog(s) included in at least one, two or three similarity lists (*“group_threshold”*). For each prediction, the number of analogues used to sustain the prediction and their activity is indicated. If structural filters based on MCS and common functional groups are used, this is specified in the *“Source_filter”* column (*"none"* is displayed when no filters are used).
 
-## Reference
+## REFERENCE
 Further details on the algorithms used to calculate similarities can be found in the reference pubblication:
 
-## Contact
+## CONTACT
 Domenico Gadaleta, PhD
 
 Computational Toxicology Unit
