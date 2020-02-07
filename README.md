@@ -26,7 +26,7 @@ Read-across prediction is made for the target based on the activity of analogue(
  -  Double click on the metanode.
  -  Type the ID and the input SMILES.
  -  Clink on *“Ok”*.
-2.	Execute the workflow by clicking on the   button on the top of the window or press Shift+F7.
+2.	Execute the workflow by clicking on the *"Execute all the executable nodes"* button on the top of the window or press Shift+F7.
 3.	Modify the settings in the second wrapped metanode, *"Set parameters"*.
  -  Double click on the metanode.
  -  Select the number of analogue(s) to consider for each of the three similarity. By default, ten analogue(s) are retrieved based on structural similarity and five based on metabolic and biological similarity.
@@ -34,10 +34,10 @@ Read-across prediction is made for the target based on the activity of analogue(
  -  Select the path of the output file. By default, a new directory named *“RAX_results”* is created on the Desktop, that includes output files.
  -  Clink on *“Ok”*.
 4.	Execute the workflow by clicking on the *"Execute all the executable nodes"* button on the top of the window or press Shift+F7. The “Set parameters” node will change from the *“Paused”* state to the *“Running”* state. If the first part of the workflow is executed successfully, the node will change to the *“Executed”* state. If the node return to the *“Paused”* state, some problems occurred during the procedure.
-5.	Press *"Save"*  on the top-left of the window to save the workflow.
+5.	Press *"Save"* on the top-left of the window to save the workflow.
 
 ### HOW TO READ THE OUTPUT
-1.	To inspect the list of selected analogue(s) within KNIME, select the *“Interactive Table”* nodes, then click on the   button on the top of the page or press F10. To inspect the RAX plot, right click on the “Set parameters” metanode, then select the *“Port 1”* option from the drop-down menu.
+1.	To inspect the list of selected analogue(s) within KNIME, select the *“Interactive Table”* nodes, then click on the *"Open the first view of the selected node"*  button on the top of the page or press F10. To inspect the RAX plot, right click on the “Set parameters” metanode, then select the *“0:Port 1”* option from the drop-down menu.
 2.	To inspect the results reported in the output files, go to the *“RAX_results”* directory that is present in the output location specified before. By default, the *“RAX_directory”* is created on the Desktop. The directory include two files:
 
 **.png file** that shows the list of analogue(s) as a pie chart. as a pie chart. Each slice of the chart represent a different analog, with the background color indicative of the analog’s activity and histogram bars that give estimation of the four similarities with respect of the target (i.e., blue for structural, pink for biological and green for metabolic similairty). Outlined slices indicate analogues included in multiple similarity lists (i.e., dark blue for three lists and light blue for two lists).
