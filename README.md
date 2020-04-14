@@ -79,12 +79,12 @@ conda install sygma bokeh selenium geckodriver firefox -c conda-forge
 # so that the source activate command works.
 # This isn't necessary if you already know that
 # the anaconda bin dir is on the PATH
-export PATH="<Anaconda Path>\bin:$PATH"
+export PATH="<Anaconda Path>/bin:$PATH"
 
 conda activate my-rdkit-env
 python "$@" 1>&1 2>&2
 ```
-Replace *<Anaconda Path>* with your Anaconda installation path.
+Replace *<Anaconda Path>* with your Anaconda installation path (e.g. home/ubuntu/anaconda3).
  
  -  Place the *.sh* file in a directory of your choose. you additionally need to make the file executable (i.e. chmod gou+x <Name of your file>.sh)
 
