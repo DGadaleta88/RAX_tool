@@ -1,39 +1,111 @@
 # AUTOMATED INTEGRATION OF STRUCTURAL, BIOLOGICAL AND METABOLIC SIMILARITIES TO SUSTAIN READ-ACROSS
 
-An automated procedure for the selection of analogues for data gap-filling is made available here. Given a target compound, analogues are identified with a decision algorithm that integrates three orthogonal similarity metrics, considering toxicologically relevant aspects:
-1)	**Structural similarity** based on structural fingerprints
-2)	**Biological similarity** based on biological fingerprints codifying the outcomes of high throughtput screening (HTS) assays from PubChem
-3)	**Metabolic similarity** based on the presence of common metabolic pathways between the target and the analogue as simulated by SyGMa library (https://github.com/3D-e-Chem/sygma)
-Structural filters based on the presence of maximum common substructures (MCS) and common functional groups can be also applied to narrow the chemical space for the analog(s) search.
-Read-across prediction is made for the target based on the activity of analogue(s) identified with multiple similarity methods.
+An automated procedure for the selection of analogues for data gap-filling is made available here (https://github.com/DGadaleta88/RAX_tool). Given a target compound, analogues are identified with a decision algorithm that integrates three orthogonal similarity metrics, considering toxicologically relevant aspects:
+
+1)	**Structural similarity** based on structural fingerprints.
+2)	**Biological similarity** based on biological fingerprints codifying the outcomes of high throughtput screening (HTS) assays from PubChem.
+3)	**Metabolic similarity** based on the presence of common metabolic pathways between the target and the analogue as simulated by SyGMa library (https://github.com/3D-e-Chem/sygma). 
+
+Structural filters based on the presence of maximum common substructures (MCS) and common functional groups (FGs) can be also applied to narrow the chemical space for the analogue(s) search. Read-across prediction is made for the target based on the activity of analogue(s) identified with multiple similarity methods.
+
+## CONTENT OF THE REPOSITORY
+
+ -  **DILIRank_RA.knwf**: the workflow to import in KNIME, using the DILIRAnk dataset as source for DILI classification.
+ -  **ToxRef_RA.knwf**: the workflow to import, using ToxRef dataset as source for hepatotoxicity classification.
+ -  **User's Guide.pdf**: the file contains instructions for the installation and use of the workflow.
+ -  **README.md**: Markdown file to compile into html containing instructions for the installation and use of the workflow.
+ -  **Amlodipine_DILI_RAX.png**: output of example that shows the list of analogue(s) as a pie chart.
+ -  **Amlodipine_DILI_RAX.xlsx**: output of example that contains results of the workflow.
 
 
 ## INSTALLATION
 
 ### HOW TO INSTALL THE WORKFLOW
-1.	Install the last version of KNIME. It can be downloaded at https://www.knime.com/knime-analytics-platform (Windows version, 64bits).
+1.	Install the last version of KNIME. It can be downloaded at https://www.knime.com/knime-analytics-platform (Windows, Linux/Unix, Mac OS X, 64bits).
 2.	Open KNIME.
 3.	Go to *“File -> Import KNIME Workflow”*.
-4.	Tick *“Select File:”* and go to *“Browse…”*. Select the *.knwf file of the workflow.
+4.	Tick *“Select File:”* and go to *“Browse…”*. Select the *.knwf* file of the workflow (*DILIRAnk_RA.knwf* or *ToxRef_RA.knwf*).
 5.	Click to *“Finish”*. 
-6.  The workflow now is in your “KNIME Explorer” menu on the left of the screen. Double click on the workflow to open it.
-7.	If some of the plugins used for the workflow are missing, a message will appear asking you to install the missing extensions. Click on *“Ok”*. The procedure will guide you in the installation of the missing extensions. Restart KNIME to make the new plugins working. 
+6.  The workflow now is in your *“KNIME Explorer”* menu on the left of the screen. Double click on the workflow to open it.
+7.	If some of the plugins used for the workflow are missing, a message will appear asking you to install the missing extensions. Click on *“Ok”*. The procedure will guide you in the installation of the missing extensions. Restart KNIME to make the new plugins working. Plugins that are necessary for running the workflow are:
+
+ -  KNIME Base Chemistry Types & Nodes
+ -  KNIME Python Integration
+ -  KNIME-CDK
+ -  RDKit KNIME integration
+
+In case some of the plugins are not automatically identified, go to *File -> Install KNIME Extensions*. The KNIME Integrations can be found manually by entering their name into the search box.
+
+### HOW TO INSTALL PYTHON FOR KNIME
 
 ## USE THE WORKFLOW
 
+Additional indications to install Python for KNIME can be found at the following link: https://docs.knime.com/latest/python_installation_guide/index.html
+1.	Download and install Anaconda from https://www.anaconda.com/distribution/. Choose Anaconda with Python 3
+2.	Open the Anaconda Prompt (anaconda3). 
+3.	Create and activate a new RDKit Python environment (*my-rdkit-env*) with the following commands:
+
+```
+conda create -c https://conda.anaconda.org/rdkit -n my-rdkit-env rdkit
+conda activate my-rdkit-env
+```
+
+4.	Use the following command to install python libraries required for the RAX workflow. Librares required are sygma, bokeh, selenium, geckodriver, firefox, pandas, numpy.
+
+```
+conda install sygma bokeh selenium geckodriver firefox -c conda-forge
+```
+
+5.1. For Windows users:
+
+ -  Create a new *.txt* file and copy/paste the following text:
+ 
+```
+@REM Adapt the folder in the PATH to your system
+@SET PATH="<Anaconda Path>\Scripts";%PATH%
+@CALL activate my-rdkit-env || ECHO Activating python environment failed
+@python %*
+ ```
+ -  Replace <Anaconda Path> with your Anaconda installation path (e.g. C:\ProgramData\Anaconda3).
+6.1.	Save the *.txt* file and change its extension to *.bat*. To change the extension, you need to change your PC settings to show hidden extensions of files, then manually rename the file from *.txt* to *.bat*. Place the *.bat* file in a directory of your choose.
+
+6.2. For Linux/Mac users:
+
+ -  Create a new *.sh* file and copy/paste the following text:
+
+```
+#! /bin/bash
+# Start by making sure that the anaconda folder is on the PATH
+# so that the source activate command works.
+# This isn't necessary if you already know that
+# the anaconda bin dir is on the PATH
+export PATH="<Anaconda Path>\bin:$PATH"
+
+conda activate my-rdkit-env
+python "$@" 1>&1 2>&2
+```
+Replace *<Anaconda Path>* with your Anaconda installation path.
+ 
+ -  Place the *.sh* file in a directory of your choose. you additionally need to make the file executable (i.e. chmod gou+x <Name of your file>.sh)
+
+
+7.	From KNIME, go to *“File -> Preferences -> KNIME -> Python”. Click on “Browse…”* next to the *“Path to Python 3 executable”* search bar and browse the *.bat/.sh*. file.
+7.	Click to the *“Apply and Close”* button.
+
+
 ### HOW TO USE THE WORKFLOW
-1.	Load the input file in the *“Insert input compound”* wrapped metanode:
+1.	Load the input in the *“Insert input compound”* wrapped metanode:
  -  Double click on the metanode.
- -  Type the ID and the input SMILES.
- -  Clink on *“Ok”*.
+ -  Type the ID and the related input SMILES.
+ -  Click on *“Ok”*.
 2.	Execute the workflow by clicking on the *"Execute all the executable nodes"* button on the top of the window or press Shift+F7.
 3.	Modify the settings in the second wrapped metanode, *"Set parameters"*.
  -  Double click on the metanode.
  -  Select the number of analogue(s) to consider for each of the three similarity. By default, ten analogue(s) are retrieved based on structural similarity and five based on metabolic and biological similarity.
- -  If appropriate, check the *“Consider MCS?”* and/or *“Consider FG?”* options to narrow the chemical space to search analogue(s). If the options are checked, it is possible to set the thresholds (*"% size target"*) to include a chemicals in the analogue(s) selection.
+ -  •	A preliminary selection of source chemicals is also possible based on the presence of Maximum Common Substructures (MCS) and common functional group(s) (FGs) with the target. If appropriate, check the *“Consider MCS?”* and/or *“Consider FG?”* options to narrow the chemical space to search analogue(s). If the options are checked, it is possible to set the thresholds (*"% size target"*) to include a chemicals in the analogue(s) selection.
  -  Select the path of the output file. By default, a new directory named *“RAX_results”* is created on the Desktop, that includes output files.
- -  Clink on *“Ok”*.
-4.	Execute the workflow by clicking on the *"Execute all the executable nodes"* button on the top of the window or press Shift+F7. The “Set parameters” node will change from the *“Paused”* state to the *“Running”* state. If the first part of the workflow is executed successfully, the node will change to the *“Executed”* state. If the node return to the *“Paused”* state, some problems occurred during the procedure.
+ -  Click on *“Ok”*.
+4.	Execute the workflow by clicking on the *"Execute all the executable nodes"* button on the top of the window or press Shift+F7. The “Set parameters” node will change from the *“Paused”* state to the *“Running”* state. If the first part of the workflow is executed successfully, the node will change to the *“Executed”* state. If the node return to the *“Paused”* state, some problems occurred during the procedure. These may be related, e.g. to an incorrect Python 3 configuration.
 5.	Press *"Save"* on the top-left of the window to save the workflow.
 
 ### HOW TO READ THE OUTPUT
