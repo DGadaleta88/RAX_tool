@@ -67,9 +67,9 @@ conda install sygma bokeh selenium geckodriver firefox -c conda-forge
 @python %*
  ```
  -  Replace <Anaconda Path> with your Anaconda installation path (e.g. C:\ProgramData\Anaconda3).
-6.1.	Save the *.txt* file and change its extension to *.bat*. To change the extension, you need to change your PC settings to show hidden extensions of files, then manually rename the file from *.txt* to *.bat*. Place the *.bat* file in a directory of your choose.
+ -  Save the *.txt* file and change its extension to *.bat*. To change the extension, you need to change your PC settings to show hidden extensions of files, then manually rename the file from *.txt* to *.bat*. Place the *.bat* file in a directory of your choose.
 
-6.2. For Linux/Mac users:
+5.2. For Linux/Mac users:
 
  -  Create a new *.sh* file and copy/paste the following text:
 
@@ -89,7 +89,7 @@ Replace *<Anaconda Path>* with your Anaconda installation path.
  -  Place the *.sh* file in a directory of your choose. you additionally need to make the file executable (i.e. chmod gou+x <Name of your file>.sh)
 
 
-7.	From KNIME, go to *“File -> Preferences -> KNIME -> Python”. Click on “Browse…”* next to the *“Path to Python 3 executable”* search bar and browse the *.bat/.sh*. file.
+6.	From KNIME, go to *“File -> Preferences -> KNIME -> Python”. Click on “Browse…”* next to the *“Path to Python 3 executable”* search bar and browse the *.bat/.sh*. file.
 7.	Click to the *“Apply and Close”* button.
 
 
