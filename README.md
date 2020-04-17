@@ -84,7 +84,7 @@ export PATH="<Anaconda Path>/bin:$PATH"
 conda activate my-rdkit-env
 python "$@" 1>&1 2>&2
 ```
-Replace *<Anaconda Path>* with your Anaconda installation path (e.g. home/ubuntu/anaconda3).
+Replace *<Anaconda Path>* with your Anaconda installation path (e.g. home/lubuntu/anaconda3).
  
  -  Place the *.sh* file in a directory of your choose. you additionally need to make the file executable (i.e. chmod gou+x <Name of your file>.sh)
 
