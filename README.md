@@ -124,6 +124,8 @@ Replace *<Anaconda Path>* with your Anaconda installation path (e.g. home/lubunt
 ## REFERENCE
 Further details on the algorithms used to calculate similarities can be found in the reference pubblication:
 
+Gadaleta, D., Golbamaki, B. A., Lavado, G. J., Roncaglioni, A., & Benfenati, E. (2020). Automated Integration of Structural, Biological and Metabolic Similarities to Sustain Read-Across. ALTEX. 9 May 2020. https://doi.org/10.14573/altex.2002281
+
 ## CONTACT
 Domenico Gadaleta, PhD
 
