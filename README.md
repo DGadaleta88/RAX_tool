@@ -8,6 +8,8 @@ An automated procedure for the selection of analogues for data gap-filling is ma
 
 Structural filters based on the presence of maximum common substructures (MCS) and common functional groups (FGs) can be also applied to narrow the chemical space for the analogue(s) search. Read-across prediction is made for the target based on the activity of analogue(s) identified with multiple similarity methods.
 
+**RAXpy, a GUI implementation of the workflow based on Python is availabe here (https://bitbucket.org/giolavado/raxpy/src/master/).
+
 ## CONTENT OF THE REPOSITORY
 
  -  **DILIRank_RA.knwf**: the workflow to import in KNIME, using the DILIRAnk dataset as source for DILI classification.
